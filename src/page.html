@@ -1,0 +1,521 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="Admin">
+
+    <style>
+        @media all {
+            @page {
+                margin: 0;
+                size: 210mm 297mm;
+                -webkit-print-color-adjust: exact !important;
+            }
+        }
+
+        @media all {
+            .page * {
+                overflow: hidden;
+            }
+
+            div {
+                margin: 0;
+                padding: 0;
+            }
+
+            body, html {
+                margin: 0;
+                padding: 0;
+                width: 210mm;
+                font-size:14px;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+
+            #dpi {
+                height: 10mm;
+                left: -100%;
+                position: absolute;
+                top: -100%;
+                width: 10mm;
+            }
+
+            #wrapper-pages {
+                width: 100%;
+            }
+
+            .section {
+                width: 210mm;
+                box-sizing: border-box;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                /*page-break-after: always;*/
+                position: relative;
+                background: white;
+            }
+
+            .pager {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                color: #999;
+                padding:15px;
+            }
+
+            .page-break {
+
+            }
+        }
+
+        @media screen {
+            html {
+                width: 100%;
+                background: #ccc;
+            }
+
+            body {
+                margin: 40px auto;
+            }
+
+            .page {
+                box-shadow: 0 0 10px #999;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            /*background: #eee;*/
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.item td {
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div id="dpi"></div>
+<div id="wrapper-pages">
+
+</div>
+<div id="wrapper-raw">
+    <div class="section">
+        <div class="invoice-box">
+            <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <img src="https://www.sparksuite.com/images/logo.png"
+                                         style="width:100%; max-width:300px;">
+                                </td>
+
+                                <td>
+                                    Invoice #: 123<br>
+                                    Created: January 1, 2015<br>
+                                    Due: February 1, 2015
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr class="information">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td>
+                                    Sparksuite, Inc.<br>
+                                    12345 Sunny Road<br>
+                                    Sunnyville, CA 12345
+                                </td>
+
+                                <td>
+                                    Acme Corp.<br>
+                                    John Doe<br>
+                                    john@example.com
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr class="heading">
+                    <td>
+                        Payment Method
+                    </td>
+
+                    <td>
+                        Check #
+                    </td>
+                </tr>
+
+                <tr class="details">
+                    <td>
+                        Check
+                    </td>
+
+                    <td>
+                        1000
+                    </td>
+                </tr>
+
+                <tr class="heading">
+                    <td>
+                        Item
+                    </td>
+
+                    <td>
+                        Price
+                    </td>
+                </tr>
+
+                <tr class="item">
+                    <td>
+                        Website design
+                    </td>
+
+                    <td>
+                        $300.00
+                    </td>
+                </tr>
+
+                <tr class="item">
+                    <td>
+                        Hosting (3 months)
+                    </td>
+
+                    <td>
+                        $75.00
+                    </td>
+                </tr>
+
+                <tr class="item last">
+                    <td>
+                        Domain name (1 year)
+                    </td>
+
+                    <td>
+                        $10.00
+                    </td>
+                </tr>
+
+                <tr class="total">
+                    <td></td>
+
+                    <td>
+                        Total: $385.00
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="section">
+        <div class="invoice-box">
+            <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <img src="https://www.sparksuite.com/images/logo.png"
+                                         style="width:100%; max-width:300px;">
+                                </td>
+
+                                <td>
+                                    Invoice #: 123<br>
+                                    Created: January 1, 2015<br>
+                                    Due: February 1, 2015
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr class="information">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td>
+                                    Sparksuite, Inc.<br>
+                                    12345 Sunny Road<br>
+                                    Sunnyville, CA 12345
+                                </td>
+
+                                <td>
+                                    Acme Corp.<br>
+                                    John Doe<br>
+                                    john@example.com
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr class="heading">
+                    <td>
+                        Payment Method
+                    </td>
+
+                    <td>
+                        Check #
+                    </td>
+                </tr>
+
+                <tr class="details">
+                    <td>
+                        Check
+                    </td>
+
+                    <td>
+                        1000
+                    </td>
+                </tr>
+
+                <tr class="heading">
+                    <td>
+                        Item
+                    </td>
+
+                    <td>
+                        Price
+                    </td>
+                </tr>
+
+                <tr class="item">
+                    <td>
+                        Website design
+                    </td>
+
+                    <td>
+                        $300.00
+                    </td>
+                </tr>
+
+                <tr class="item">
+                    <td>
+                        Hosting (3 months)
+                    </td>
+
+                    <td>
+                        $75.00
+                    </td>
+                </tr>
+
+                <tr class="item last">
+                    <td>
+                        Domain name (1 year)
+                    </td>
+
+                    <td>
+                        $10.00
+                    </td>
+                </tr>
+
+                <tr class="total">
+                    <td></td>
+
+                    <td>
+                        Total: $385.00
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    'use strict';
+
+    class PageSetup {
+
+        constructor() {
+            this.pages = [];
+        }
+
+        addPage() {
+            const pageNum = this.pages.length + 1
+            const page = {
+                number: pageNum,
+                data: []
+            };
+
+            this.pages.push(page)
+            return pageNum
+        }
+
+        addContent(pageNum, content) {
+            this.pages[pageNum - 1].data.push(content)
+        }
+
+        getContent(pageNum) {
+            return this.pages[pageNum - 1].data
+        }
+
+        getContentsHeight(pageNum) {
+            let totalHeight = 0;
+            for (const elem of this.pages[pageNum - 1].data) {
+                totalHeight += elem.clientHeight
+            }
+            return totalHeight
+        }
+
+        fitsIn(pageNum, elem) {
+            const height = elem.clientHeight;
+            // console.log('element height', height)
+            const contentHeight = this.getContentsHeight(pageNum)
+            // console.log('contents height', contentHeight)
+            return (height + contentHeight) < getPixelsPerPage()
+        }
+
+        getTotalPages() {
+            return this.pages.length
+        }
+    }
+
+    function getPixelsPerMm() {
+        return document.getElementById("dpi").offsetHeight / 10
+    }
+
+    function getPixelsPerPage() {
+        const pppExact = getPixelsPerMm() * 297;
+        return pppExact * 0.9;
+    }
+
+    function getDocumentHeight() {
+        return document.documentElement.getBoundingClientRect().height
+    }
+
+    function getApparentPageCount() {
+        return 1 + (getDocumentHeight() / getPixelsPerPage())
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        // console.log('eee')
+        // console.log(getPixelsPerPage())
+        // console.log(getDocumentHeight())
+        // console.log(getApparentPageCount())
+        rearrangeDocumentForPrint()
+    });
+
+    function rearrangeDocumentForPrint() {
+        const pageHeightLimit = getPixelsPerPage()
+        const pageSetup = setupPage()
+        movePagesToPrintableWrapper(pageSetup)
+        console.log(pageSetup)
+    }
+
+    function setupPage() {
+        const rawWrapper = document.getElementById('wrapper-raw')
+        const pageSetup = new PageSetup()
+
+        let currentPage = pageSetup.addPage();
+
+        for (let child of rawWrapper.children) {
+            if (child.classList.contains('section')) {
+                if (pageSetup.fitsIn(currentPage, child)) {
+                    pageSetup.addContent(currentPage, child)
+                } else {
+                    currentPage = pageSetup.addPage()
+                    pageSetup.addContent(currentPage, child)
+                }
+            }
+
+            if (child.classList.contains('page-break')) {
+                currentPage = pageSetup.addPage()
+            }
+        }
+
+        return pageSetup
+    }
+
+    function movePagesToPrintableWrapper(pageSetup) {
+        const printableWrapper = document.getElementById('wrapper-pages')
+
+        for (let i = 1; i <= pageSetup.getTotalPages(); i++) {
+            const pageDiv = document.createElement('div')
+            pageDiv.classList.add('page')
+            pageDiv.append(getPagerElement(i, pageSetup.getTotalPages()))
+            for (let elem of pageSetup.getContent(i)) {
+                console.log('element:', elem)
+                pageDiv.append(elem)
+            }
+            printableWrapper.append(pageDiv)
+        }
+
+    }
+
+    function getPagerElement(pageNum, totalPages) {
+        const pager = document.createElement('div')
+        pager.classList.add('pager');
+        pager.innerText = pageNum + ' / ' + totalPages
+        return pager
+
+    }
+</script>
+</body>
+</html>
